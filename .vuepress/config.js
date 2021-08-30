@@ -192,41 +192,9 @@ module.exports = {
   },
   configureWebpack: (config, isServer) => {
     if (process.env.NODE_ENV === 'production') {
-      config.module.rules[4] = {
-        test: /\.(png|jpe?g|gif)(\?.*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-              name: 'docs-assets/img/[name].[hash:8].[ext]',
-              publicPath,
-            },
-          },
-        ],
-      }
-      config.module.rules[5] = {
-        test: /\.(svg)(\?.*)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: { name: 'docs-assets/img/[name].[hash:8].[ext]', publicPath },
-          },
-        ],
-      }
-      config.module.rules[7] = {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: { limit: 10000, name: 'docs-assets/fonts/[name].[hash:8].[ext]' },
-          },
-        ],
-      }
       config.plugins[1].options = {
         filename: 'docs-assets/css/styles.[chunkhash:8].css',
         chunkFilename: 'docs-assets/css/[id].styles.[chunkhash:8].css',
-        publicPath,
       }
     }
   },
@@ -238,6 +206,33 @@ module.exports = {
 
     webpackConfig.resolve.alias.set('public', path.resolve(__dirname, './public'))
     webpackConfig.resolve.alias.set('assets', path.resolve(__dirname, './assets'))
+
+    webpackConfig.module
+      .rule('images')
+      .test(/\.(png|jpe?g|gif)(\?.*)?$/)
+      .use('url-loader')
+      .loader('url-loader')
+      .options({
+        limit: 10000,
+        name: 'docs-assets/img/[name].[hash:8].[ext]',
+      })
+
+    webpackConfig.module
+      .rule('svg')
+      .test(/\.(svg)(\?.*)?$/)
+      .use('file-loader')
+      .loader('file-loader')
+      .options({ name: 'docs-assets/img/[name].[hash:8].[ext]' })
+
+    webpackConfig.module
+      .rule('fonts')
+      .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
+      .use('url-loader')
+      .loader('url-loader')
+      .options({
+        limit: 10000,
+        name: 'docs-assets/fonts/[name].[hash:8].[ext]',
+      })
 
     webpackConfig.module
       .rule('compile')
