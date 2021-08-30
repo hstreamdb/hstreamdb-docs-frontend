@@ -1,7 +1,7 @@
 const navConfig = require('./config/navConfig')
 const footerConfig = require('./config/footerConfig')
 const gitHubConfig = require('./config/githubConfig')
-const directory = require('../directory.json')
+const directory = require('../docs/directory.json')
 const version = process.env.VERSION
 const prefixEN = `/docs/en/${version ? `${version}/` : ''}`
 const prefixZH = `/docs/zh/${version ? `${version}/` : ''}`

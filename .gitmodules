@@ -1,0 +1,4 @@
+[submodule "docs"]
+	path = docs
+	url = https://github.com/Red-Asuka/docs.git
+	branch = only-md
