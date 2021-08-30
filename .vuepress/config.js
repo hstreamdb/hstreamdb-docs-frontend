@@ -214,6 +214,15 @@ module.exports = {
           },
         ],
       }
+      config.module.rules[7] = {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: { limit: 10000, name: 'docs-assets/fonts/[name].[hash:8].[ext]' },
+          },
+        ],
+      }
       config.plugins[1].options = {
         filename: 'docs-assets/css/styles.[chunkhash:8].css',
         chunkFilename: 'docs-assets/css/[id].styles.[chunkhash:8].css',
@@ -228,6 +237,7 @@ module.exports = {
     })
 
     webpackConfig.resolve.alias.set('public', path.resolve(__dirname, './public'))
+    webpackConfig.resolve.alias.set('assets', path.resolve(__dirname, './assets'))
 
     webpackConfig.module
       .rule('compile')
