@@ -1,5 +1,5 @@
 const version = process.env.VERSION || 'latest'
-const docsBranch = process.env.DOCSBRANCH || 'master'
+const docsBranch = process.env.DOCSBRANCH || 'main'
 
 module.exports = {
   'zh-CN': {
@@ -9,7 +9,7 @@ module.exports = {
     feedbackLinkText: '反馈问题',
     docsRepo: 'hstreamdb/docs',
     docsBranch,
-    docsDir: 'docs/zh',
+    docsDir: 'zh',
     version,
   },
   en: {
@@ -19,7 +19,7 @@ module.exports = {
     feedbackLinkText: 'Request docs changes',
     docsRepo: 'hstreamdb/docs',
     docsBranch,
-    docsDir: 'docs/en',
+    docsDir: 'en',
     version,
   },
 }
