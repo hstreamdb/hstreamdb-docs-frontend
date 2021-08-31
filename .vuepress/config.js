@@ -5,7 +5,7 @@ const directory = require('../docs/directory.json')
 const version = process.env.VERSION
 const prefixEN = `/docs/en/${version ? `${version}/` : ''}`
 const prefixZH = `/docs/zh/${version ? `${version}/` : ''}`
-const publicPath = 'https://hstream-static.emqx.com/'
+const publicPath = 'https://hstream-static.emqx.net/'
 
 const { removePlugin, PLUGINS } = require('@vuepress/markdown')
 const fs = require('fs')
