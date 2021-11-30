@@ -28,8 +28,8 @@
         class="button is-trans-top downloads nav-item"
         :href="
           $lang === 'zh-CN'
-            ? 'https://www.emqx.com/zh/downloads?product=hstreamdb'
-            : 'https://www.emqx.com/en/downloads?product=hstreamdb'
+            ? 'https://www.emqx.com/zh/try?product=hstreamdb'
+            : 'https://www.emqx.com/en/try?product=hstreamdb'
         "
         target="_blank"
         rel="noopener"
